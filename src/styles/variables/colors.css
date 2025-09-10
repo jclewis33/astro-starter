@@ -1,0 +1,136 @@
+/* ==========================================================================
+       COLORS
+     ========================================================================== */
+:root {
+  /*================== Brand Colors ========================*/
+
+  /* Color Brand Blacks */
+
+  --color-brand-black: #0e0e0e;
+  --color-brand-black-o20: color-mix(
+    in srgb,
+    var(--color-brand--black) 20%,
+    transparent
+  );
+  --color-brand-black-o50: color-mix(
+    in srgb,
+    var(--color-brand--black) 50%,
+    transparent
+  );
+  --color-brand-black-o75: color-mix(
+    in srgb,
+    var(--color-brand--black) 75%,
+    transparent
+  );
+
+  /* Color Brand Whites */
+  --color-brand-white: #f8f8f8;
+  --color-brand-white-o20: color-mix(
+    in srgb,
+    var(--color-brand--white) 20%,
+    transparent
+  );
+  --color-brand-white-o50: color-mix(
+    in srgb,
+    var(--color-brand--white) 50%,
+    transparent
+  );
+  --color-brand-white-o75: color-mix(
+    in srgb,
+    var(--color-brand--white) 75%,
+    transparent
+  );
+
+  /* Color Brand Dark */
+  --color-brand-dark: #dbe7ff;
+  --color-brand-dark-2: #0058db;
+  --color-brand-dark-3: #2e3f61;
+
+  /* Color Brand Light */
+  --color-brand-light: #f7f7f7;
+  --color-brand-light-2: #e1e1e1;
+  /* --color-brand-light-3: #dbe7ff; */
+
+  /*================== Neutral Colors ========================*/
+
+  --color-neutral-lightest: #f7f7f7;
+  --color-neutral-lighter: #ccc;
+  --color-neutral-light: #aaa;
+  --color-neutral: #666;
+  --color-neutral-dark: #444;
+  --color-neutral-darker: #111;
+  --color-neutral-darkest: #222;
+
+  /*================== System Colors ========================*/
+
+  --color-success-green: #cef5ca;
+  --color-success-green-dark: #114e0b;
+  --color-warning-yellow: #fcf8d8;
+  --color-warning-yellow-dark: #5e5515;
+  --color-error-red: #f8e4e4;
+  --color-error-red-dark: #3b0b0b;
+
+  /* Color Focus State for tabbing through website. See reset for how this is applied website wide */
+
+  --color-focus-state: #2d62ff;
+
+  /*================== Theme Colors ========================*/
+
+  /* Background - Light */
+
+  --theme-bg-light: var(--color-brand-light);
+  --theme-bg-light-2: var(--color-brand-light);
+  --theme-bg-light-3: var(--color-brand-light);
+
+  /* Background - Dark */
+
+  --theme-bg--dark: var(--color-brand-dark-1);
+  --theme-bg--dark-2: var(--color-brand-dark-2);
+  --theme-bg--dark-3: var(--color-brand-dark-3);
+
+  /* Background - Gradient */
+
+  --theme-gradient-dark: linear-gradient(
+    94deg,
+    #bf28f5 -0.01%,
+    #7740f0 51.63%,
+    #1232d1 103.27%
+  );
+
+  --theme-gradient-light-blue: linear-gradient(
+    180deg,
+    #dde8ff 0%,
+    #f7f7f7 100%
+  );
+
+  --theme-gradient-light-blue-reverse: linear-gradient(
+    180deg,
+    #f7f7f7 0%,
+    #dde8ff 100%
+  );
+
+  /* Text - Dark */
+
+  --theme-text-dark: var(--color-brand-black);
+  --theme-text-dark-2: var(--color-neutral-darkest);
+  --theme-text-dark-3: var(--color-neutral-darkest);
+
+  /* Text - Light */
+
+  --theme-text-light: var(--color-brand-white);
+  --theme-text-light-2: var(--color-neutral-black);
+  --theme-text-light-3: var(--color-neutral-black);
+
+  /*================== Gradients ========================*/
+
+  /* Primary Gradient Colors */
+
+  --gradient-primary-start: ##bf28f5;
+  --gradient-primary-middle: #7740f0;
+  --gradient-primary-end: #1232d1;
+
+  /* Secondary Gradient Colors */
+
+  --gradient-secondary-start: #ff9b3e;
+  --gradient-secondary-end: #ff3e3e;
+}

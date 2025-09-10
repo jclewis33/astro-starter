@@ -1,0 +1,38 @@
+---
+import Image from "astro/components/Image.astro";
+import Button from "./Button.astro";
+import ctaImage from "../assets/cta-image.avif";
+---
+
+<section class="cta padding-vertical-sitewide">
+  <div class="container">
+    <div class="cta__layout display-grid grid-2">
+      <!-- CTA Content Wrapper -->
+      <div
+        class="cta__content-wrapper display-flex flex-direction-column justify-content-center"
+      >
+        <div class="cta__heading heading-h2 margin-heading" data-splittext>
+          Ready to Transform Your Hiring Process?
+        </div>
+        <div class="cta__paragraph margin-paragraph" data-fade-in>
+          Stop waiting months for maybe. Start meeting qualified executives this
+          week.
+        </div>
+        <div class="cta button-wrapper-group" data-fade-up>
+          <Button href="/contact">Book a Session</Button>
+        </div>
+      </div>
+      <!-- CTA Image Wrapper -->
+      <div class="cta__image-wrapper u-visual-wrapper">
+        <Image src={ctaImage} alt={"woman walking through the office happy"} />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ========== CTA Section ========= */
+
+  .cta__layout {
+  }
+</style>

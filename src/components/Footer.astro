@@ -1,0 +1,192 @@
+---
+import Image from "astro/components/Image.astro";
+import Logo from "../components/Logo.astro";
+---
+
+<footer class="footer padding-vertical-sitewide">
+  <div class="container">
+    <!-- Footer Component Grid -->
+    <div class="footer__grid grid-3">
+      <div
+        class="footer__left-column display-flex flex-direction-column gap-2rem"
+      >
+        <!-- Footer Logo -->
+        <div class="footer__logo-wrapper">
+          <Logo variant="footer" />
+        </div>
+        <!-- Footer Contact Wrapper -->
+        <div class="footer__contact-wrapper">
+          <div class="footer__contact-text">Contact:</div>
+          <a href="mailto:contact@popcandi.ai" class="footer__email"
+            >contact@popcandi.ai</a
+          >
+        </div>
+        <!-- Footer Contact Icons -->
+        <div class="footer__contact-icon-wrapper">
+          <!-- Facebook Icon NEED ADDRESS -->
+          <div class="footer__icon-wrapper">
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              class="social-media__link"
+            >
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="social-media__icon"
+              >
+                <path
+                  d="M22 12.5728C22 7.01623 17.5229 2.51172 12 2.51172C6.47715 2.51172 2 7.01623 2 12.5728C2 17.5945 5.65684 21.7569 10.4375 22.5117V15.4811H7.89844V12.5728H10.4375V10.3562C10.4375 7.83468 11.9305 6.44184 14.2146 6.44184C15.3088 6.44184 16.4531 6.63835 16.4531 6.63835V9.11433H15.1922C13.95 9.11433 13.5625 9.88994 13.5625 10.6856V12.5728H16.3359L15.8926 15.4811H13.5625V22.5117C18.3432 21.7569 22 17.5947 22 12.5728Z"
+                  fill="currentColor"></path>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Instagram Icon NEED ADDRESS-->
+          <div class="footer__icon-wrapper">
+            <a
+              href="https://www.instagram.com/"
+              target="_blank"
+              class="social-media__link"
+            >
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="social-media__icon"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M16 3.51172H8C5.23858 3.51172 3 5.7503 3 8.51172V16.5117C3 19.2731 5.23858 21.5117 8 21.5117H16C18.7614 21.5117 21 19.2731 21 16.5117V8.51172C21 5.7503 18.7614 3.51172 16 3.51172ZM19.25 16.5117C19.2445 18.3043 17.7926 19.7562 16 19.7617H8C6.20735 19.7562 4.75549 18.3043 4.75 16.5117V8.51172C4.75549 6.71907 6.20735 5.26721 8 5.26172H16C17.7926 5.26721 19.2445 6.71907 19.25 8.51172V16.5117ZM16.75 8.76172C17.3023 8.76172 17.75 8.314 17.75 7.76172C17.75 7.20944 17.3023 6.76172 16.75 6.76172C16.1977 6.76172 15.75 7.20944 15.75 7.76172C15.75 8.314 16.1977 8.76172 16.75 8.76172ZM12 8.01172C9.51472 8.01172 7.5 10.0264 7.5 12.5117C7.5 14.997 9.51472 17.0117 12 17.0117C14.4853 17.0117 16.5 14.997 16.5 12.5117C16.5027 11.3174 16.0294 10.1713 15.1849 9.3268C14.3404 8.48231 13.1943 8.00906 12 8.01172ZM9.25 12.5117C9.25 14.0305 10.4812 15.2617 12 15.2617C13.5188 15.2617 14.75 14.0305 14.75 12.5117C14.75 10.9929 13.5188 9.76172 12 9.76172C10.4812 9.76172 9.25 10.9929 9.25 12.5117Z"
+                  fill="currentColor"></path>
+              </svg>
+            </a>
+          </div>
+          <!-- Twitter Icon NEED ADDRESS-->
+          <div class="footer__icon-wrapper">
+            <a
+              href="https://www.twitter.com/"
+              target="_blank"
+              class="social-media__link"
+            >
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="social-media__icon"
+              >
+                <path
+                  d="M17.1761 4.354H19.9362L13.9061 11.1314L21 20.354H15.4456L11.0951 14.7606L6.11723 20.354H3.35544L9.80517 13.1048L3 4.354H8.69545L12.6279 9.46662L17.1761 4.354ZM16.2073 18.7294H17.7368L7.86441 5.89328H6.2232L16.2073 18.7294Z"
+                  fill="currentColor"></path>
+              </svg>
+            </a>
+          </div>
+          <!-- LinkedIn Icon NEED ADDRESS-->
+          <div class="footer__icon-wrapper">
+            <a
+              href="https://www.linkedin.com/"
+              target="_blank"
+              class="social-media__link"
+            >
+              <svg
+                width="100%"
+                height="100%"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="social-media__icon"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M5 3.11133H19C20.1046 3.11133 21 4.00676 21 5.11133V19.1113C21 20.2159 20.1046 21.1113 19 21.1113H5C3.89543 21.1113 3 20.2159 3 19.1113V5.11133C3 4.00676 3.89543 3.11133 5 3.11133ZM8 18.1113C8.27614 18.1113 8.5 17.8874 8.5 17.6113V10.6113C8.5 10.3352 8.27614 10.1113 8 10.1113H6.5C6.22386 10.1113 6 10.3352 6 10.6113V17.6113C6 17.8874 6.22386 18.1113 6.5 18.1113H8ZM7.25 9.11133C6.42157 9.11133 5.75 8.43976 5.75 7.61133C5.75 6.7829 6.42157 6.11133 7.25 6.11133C8.07843 6.11133 8.75 6.7829 8.75 7.61133C8.75 8.43976 8.07843 9.11133 7.25 9.11133ZM17.5 18.1113C17.7761 18.1113 18 17.8874 18 17.6113V13.0113C18.0325 11.4221 16.8576 10.0658 15.28 9.87133C14.177 9.77058 13.1083 10.2857 12.5 11.2113V10.6113C12.5 10.3352 12.2761 10.1113 12 10.1113H10.5C10.2239 10.1113 10 10.3352 10 10.6113V17.6113C10 17.8874 10.2239 18.1113 10.5 18.1113H12C12.2761 18.1113 12.5 17.8874 12.5 17.6113V13.8613C12.5 13.0329 13.1716 12.3613 14 12.3613C14.8284 12.3613 15.5 13.0329 15.5 13.8613V17.6113C15.5 17.8874 15.7239 18.1113 16 18.1113H17.5Z"
+                  fill="currentColor"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- Footer Nav Links -->
+      <nav class="footer__nav">
+        <a href="/" class="footer__nav-item">Home</a>
+        <a href="/about" class="footer__nav-item">About</a>
+        <a href="/contact" class="footer__nav-item">Contact</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+
+<style>
+  /* Footer Styles */
+  .footer {
+    color: var(--theme-text-light);
+    background-color: var(--theme-bg--dark-3);
+  }
+
+  /* Footer grid component */
+  .footer__grid.grid-3 {
+    align-items: center;
+  }
+
+  /* Footer Logo  */
+
+  .footer__logo-wrapper {
+    display: inline-block;
+    max-width: 12rem;
+  }
+
+  .footer__logo-wrapper .footer__logo {
+    height: auto;
+    width: 100%;
+  }
+
+  /* Footer navigation links */
+  .footer__nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--grid-gap-1rem);
+  }
+
+  .footer__nav-item {
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .footer__nav-item:hover {
+    opacity: 0.8;
+  }
+
+  /* Footer Contact Icon Wrapper */
+  .footer__contact-icon-wrapper {
+    display: flex;
+    gap: 1rem;
+  }
+
+  /* Footer Icon Wrapper */
+
+  .footer__icon-wrapper {
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: opacity 0.3s ease;
+  }
+
+  .footer__icon-wrapper:hover {
+    opacity: 0.8;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 991px) {
+    .footer__grid {
+      text-align: center;
+    }
+  }
+</style>

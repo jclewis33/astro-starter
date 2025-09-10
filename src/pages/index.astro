@@ -1,11 +1,28 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+// Components
+import Image from "astro/components/Image.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import TestimonialsSilder from "../components/TestimonialsSilder.astro";
+import CTASection from "../components/CTASection.astro";
+import FAQ from "../components/FAQ.astro";
+// Styles
+import "../styles/pages/home.css";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Assets - Images
+import portraitOfCasey from "../assets/casey-lewis-owner-casey-lewis-photography.avif";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout>
+  <div class="background_gradient--top"></div>
+  <!-- SECTION - Home Hero -->
+  <section class="home-hero padding-vertical-sitewide">
+    <div class="container">
+      <!-- Home Hero - Component -->
+
+      <!-- CTA -->
+      <CTASection />
+      <!-- FAQ Component -->
+      <FAQ />
+    </div>
+  </section></BaseLayout
+>

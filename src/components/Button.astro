@@ -1,0 +1,150 @@
+---
+/**
+ * Props for the reusable Button component.
+ */
+interface Props {
+  /**
+   * Visual style of the button.
+   * - `primary` → filled default button
+   * - `secondary` → outlined/secondary button
+   * - `text` → text-only button
+   */
+  variant?: "primary" | "secondary" | "text";
+
+  /**
+   * Size of the button.
+   * - `small` → compact size
+   * - `large` → larger padding
+   * - `default` → base size
+   */
+  size?: "small" | "large" | "default";
+
+  /**
+   * Apply breadcrumb styling (smaller text, tighter spacing).
+   * No need to pass true. This is a simple on/off flag (true/false).
+   * Requires `variant="text"` and `icon` for breadcrumb styles to apply.
+   *
+   * Example:
+   * ```astro
+   *  <Button variant="text" icon breadcrumb>
+   * ```
+   */
+  breadcrumb?: boolean;
+
+  /**
+   * Turns the button into a link (`<a>`).
+   *
+   * Example:
+   * ```astro
+   *  <Button href="/about">About</Button>
+   * ```
+   */
+  href?: string;
+
+  /**
+   * Opens the link in a new tab.
+   * Works only when `href` is set.
+   */
+  newTab?: boolean;
+
+  /**
+   * Disable the button (`<button disabled>`).
+   */
+  disabled?: boolean;
+
+  /**
+   * Use icon layout.
+   *
+   * Typically applied if you pass `slot="icon-left"` or `slot="icon-right"`.
+   *
+   * This is a simple on/off flag (true/false). No need to pass `true` explicitly:
+   *
+   * ```astro
+   * <Button icon>
+   *   <svg slot="icon-left" aria-hidden="true"><path /></svg>
+   *   All Candidates
+   * </Button>
+   * ```
+   *
+   * Can create a text-only button with an icon by passing `variant="text"` along with `icon`:
+   *
+   * ```astro
+   * <Button variant="text" icon>
+   *   <svg slot="icon-left" aria-hidden="true"><path /></svg>
+   *   All Candidates
+   * </Button>
+   * ```
+   */
+  icon?: boolean;
+
+  /**
+   * Extra classes to append (e.g., `w-full`).
+   */
+  class?: string;
+
+  /**
+   * Native button type.
+   * - `button` (default)
+   * - `submit`
+   * - `reset`
+   */
+  type?: "button" | "submit" | "reset";
+}
+
+const {
+  variant = "primary",
+  size = "default",
+  breadcrumb = false,
+  href,
+  newTab = false,
+  disabled = false,
+  icon = false,
+  class: extra = "",
+  type = "button",
+  ...rest
+} = Astro.props;
+
+/* Build class list from your CSS combo-classes. Using && operator as shorthand for an if else statement: let className;
+if (variant === "secondary") {
+  className = "is-secondary";
+} else {
+  className = false;
+}
+
+Rule:
+	•	If the left-hand side is truthy, && returns the right-hand side.
+	•	If the left-hand side is falsy, && returns the left-hand side.
+*/
+const classes = [
+  "button", // always add base .button
+  variant === "secondary" && "is-secondary",
+  variant === "text" && "is-text",
+  size === "small" && "is-small",
+  size === "large" && "is-large",
+  icon && "is-icon", //boolean no need to set equal to a string. adds is-icon combo class when icon is added to button
+  breadcrumb && "is-breadcrumb", //boolean no need to set equal to a string. adds is-breadcrumb combo class when icon is added to button
+  extra, // allow passing any extra utility classes
+]
+  .filter(Boolean) // filters out false items
+  .join(" "); // joins any remaining items into a string of classes with a space inbetween each
+
+// Security defaults for external links
+const rel = newTab ? "noopener noreferrer" : undefined;
+const target = newTab ? "_blank" : undefined;
+---
+
+{
+  href ? (
+    <a href={href} class={classes} target={target} rel={rel} {...rest}>
+      <slot name="icon-left" />
+      <slot />
+      <slot name="icon-right" />
+    </a>
+  ) : (
+    <button class={classes} type={type} disabled={disabled} {...rest}>
+      <slot name="icon-left" />
+      <slot />
+      <slot name="icon-right" />
+    </button>
+  )
+}

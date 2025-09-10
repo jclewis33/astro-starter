@@ -1,0 +1,34 @@
+---
+import "../../src/styles/global.css";
+import Head from "../components/Head.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+//Destructure the meta props that each page may pass
+const { title, description, canonical } = Astro.props;
+
+//Pass custom props if needed. This is for reference, default props will be passed from the head component.
+//const title = "Custom Page Title | Casey Lewis Photography";
+//const description = "A custom description for this page.";
+//const canonical = "https://www.caseylewisphotography.com/custom-page";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <Head title={title} description={description} canonical={canonical} />
+  </head>
+  <body>
+    <!--Navbar appears at the top of every page -->
+    <Navbar />
+    <main>
+      <!--Rest of page content -->
+      <slot />
+      <!--Footer appears at the bottom of every page -->
+    </main>
+    <Footer />
+    <script>
+      import "../scripts/animation.js";
+    </script>
+  </body>
+</html>

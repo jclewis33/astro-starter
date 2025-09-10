@@ -1,0 +1,119 @@
+/* ==========================================================================
+   MODERN CSS RESET
+   ========================================================================== */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Remove default margin and padding */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  font-family: var(--font-primary);
+  color: var(--theme-text-dark);
+  background-color: var(--theme-background--dark);
+  text-transform: var(--_text-style---text-transform);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility; /* This overrides optimizeSpeed */
+}
+
+/* Make images easier to work with.
+   Astro injects similar defaults when using the <Image> component with responsiveStyles: true,
+   but these rules ensure consistency for raw <img> or <picture> elements (e.g. from APIs or images added to the public folder, which aren't touched by Astro).
+*/
+img,
+picture {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+  color: var(---color-focus-state);
+}
+
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: var(--focus-width) solid var(--color-focus-state);
+  outline-offset: var(--focus-offset-outer);
+  border-radius: var(--radius-small);
+}
+
+/* Data Prevent Flicker Attribute to keep flicker from occuring with GSAP  */
+
+html:not(.gsap-not-found) [data-prevent-flicker="true"] {
+  visibility: hidden;
+}
+.line-mask,
+.word-mask,
+.char-mask {
+  padding-block: 0.1em;
+  margin-block: -0.1em;
+}
