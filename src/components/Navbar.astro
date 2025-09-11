@@ -12,16 +12,16 @@ import Button from "./Button.astro";
   <nav class="navbar">
     <ul class="nav-list">
       <li><a class="nav-link" href="/about">About</a></li>
+      <li><a class="nav-link" href="/pricing">Pricing</a></li>
       <li><a class="nav-link" href="/contact">Contact</a></li>
       <li><Button href="/contact">Request a Demo</Button></li>
     </ul>
   </nav>
+  <button class="btn-mobile-nav">
+    <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
+    <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+  </button>
 </header>
-
-<button class="btn-mobile-nav">
-  <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
-  <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
-</button>
 
 <script>
   // Make mobile navigation work
@@ -203,7 +203,7 @@ import Button from "./Button.astro";
 
     /* Mobile navigation container */
     .navbar {
-      background-color: var(--theme-background--dark-2);
+      background-color: var(--theme-bg-light);
       -webkit-backdrop-filter: blur(10px);
       backdrop-filter: blur(5px);
       position: absolute;

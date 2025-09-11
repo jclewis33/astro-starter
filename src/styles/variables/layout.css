@@ -16,26 +16,28 @@
   --grid-11: repeat(11, minmax(0, 1fr));
   --grid-12: repeat(12, minmax(0, 1fr));
 
-  /* Grid Gaps */
-  --grid-gap-standard: 4rem;
-  --grid-gap-1rem: 1rem;
-  --grid-gap-2rem: 2rem;
-  --grid-gap-0-5rem: 0.5rem;
+  /* Gaps */
+  --gap-standard: 4rem;
+  --gap-4rem: 4rem;
+  --gap-3rem: 3rem;
+  --gap-2rem: 2rem;
+  --gap-1rem: 1rem;
+  --gap-0-5rem: 0.5rem;
 
-  /* GRID GAP STANDARD - Responsive */
+  /* GAP STANDARD - Responsive */
   @media screen and (max-width: 991px) {
     :root {
-      --grid-gap--standard: 3rem;
+      --gap-standard: 3rem;
     }
   }
   @media screen and (max-width: 767px) {
     :root {
-      --grid-gap--standard: 2rem;
+      --gap-standard: 2rem;
     }
   }
   @media screen and (max-width: 479px) {
     :root {
-      --grid-gap--standard: 1rem;
+      --gap-standard: 1rem;
     }
   }
 

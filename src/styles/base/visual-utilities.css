@@ -2,28 +2,24 @@
        BACKGROUND COLOR UTILITIES
    ======================================================= */
 
-.background-color-primary {
-  background-color: var(--theme-background--dark);
-}
-
 .bg-light {
-  background-color: var(--theme-background--dark-2);
+  background-color: var(--theme-bg-light);
 }
 .bg-light-2 {
-  background-color: var(--color-neutral-white);
+  background-color: var(--theme-bg-light-2);
 }
 .bg-light-3 {
-  background-color: var(--color-neutral-white);
+  background-color: var(--theme-bg-light-3);
 }
 
 .bg-dark {
-  background-color: var(--color-neutral-white);
+  background-color: var(--theme-bg-dark);
 }
 .bg-dark-2 {
-  background-color: var(--color-neutral-white);
+  background-color: var(--theme-bg-dark-2);
 }
 .bg-dark-3 {
-  background-color: var(--color-neutral-white);
+  background-color: var(--theme-bg-dark-3);
 }
 
 /* =======================================================
@@ -318,4 +314,18 @@ u-gradient-1 {
 .icon-64 {
   width: 4rem;
   height: 4rem;
+}
+
+/* =======================================================
+   BUTTON WRAPPER UTILITIES
+   ======================================================= */
+
+.button-wrapper {
+  padding-top: 1.5rem;
+}
+
+.button-wrapper-group {
+  display: flex;
+  gap: 1rem;
+  padding-top: 1.5rem;
 }

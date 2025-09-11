@@ -34,7 +34,7 @@ section {
 }
 
 /* Removes Styles from Button Elements 
-   Important when using the Global Clickable Component for buttons from Lummos */
+   Important when using the Global Clickable Component for buttons from Lumos */
 button {
   background-color: unset;
   padding: unset;

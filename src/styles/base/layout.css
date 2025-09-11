@@ -13,20 +13,20 @@
 
 /* Container Padding Utilities */
 
-.container--no-padding {
+.container-no-padding {
   padding-left: 0;
   padding-right: 0;
 }
 
-.container--narrow {
+.container-narrow {
   max-width: 48rem; /* 768px */
 }
 
-.container--wide {
+.container-wide {
   max-width: 120rem; /* 1920px */
 }
 
-.container--full {
+.container-full {
   width: 100vw;
   margin-left: 0;
   margin-right: 0;
@@ -98,8 +98,8 @@
    ================================================== */
 
 .grid-1 {
-  column-gap: var(--grid-gap-standard);
-  row-gap: var(--grid-gap-standard);
+  column-gap: var(--gap-standard);
+  row-gap: var(--gap-standard);
   grid-template-rows: auto;
   grid-auto-columns: 1fr;
   grid-template-columns: var(--grid-1);
@@ -107,8 +107,8 @@
 }
 
 .grid-2 {
-  column-gap: var(--grid-gap-standard);
-  row-gap: var(--grid-gap-standard);
+  column-gap: var(--gap-standard);
+  row-gap: var(--gap-standard);
   grid-template-rows: auto;
   grid-auto-columns: 1fr;
   grid-template-columns: var(--grid-2);
@@ -116,8 +116,8 @@
 }
 
 .grid-3 {
-  column-gap: var(--grid-gap-standard);
-  row-gap: var(--grid-gap-standard);
+  column-gap: var(--gap-standard);
+  row-gap: var(--gap-standard);
   grid-template-rows: auto;
   grid-auto-columns: 1fr;
   grid-template-columns: var(--grid-3);
@@ -125,8 +125,8 @@
 }
 
 .grid-4 {
-  column-gap: var(--grid-gap-standard);
-  row-gap: var(--grid-gap-standard);
+  column-gap: var(--gap-standard);
+  row-gap: var(--gap-standard);
   grid-template-rows: auto;
   grid-auto-columns: 1fr;
   grid-template-columns: var(--grid-4);
@@ -153,19 +153,27 @@
    ================================================= */
 
 .gap-standard {
-  gap: var(--grid-gap-standard);
+  gap: var(--gap-standard);
+}
+
+.gap-4rem {
+  gap: var(--gap-4rem);
+}
+
+.gap-3rem {
+  gap: var(--gap-3rem);
 }
 
 .gap-2rem {
-  gap: var(--grid-gap-2rem);
+  gap: var(--gap-2rem);
 }
 
 .gap-1rem {
-  gap: var(--grid-gap-1rem);
+  gap: var(--gap-1rem);
 }
 
 .gap-0-5rem {
-  gap: var(--grid-gap-0-5rem);
+  gap: var(--gap-0-5rem);
 }
 
 /* =================================================

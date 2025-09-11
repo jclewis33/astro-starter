@@ -1,12 +1,14 @@
 ---
 import Image from "astro/components/Image.astro";
 import Logo from "../components/Logo.astro";
+import Button from "./Button.astro";
 ---
 
 <footer class="footer padding-vertical-sitewide">
   <div class="container">
     <!-- Footer Component Grid -->
-    <div class="footer__grid grid-3">
+    <div class="footer__layout">
+      <!-- Footer Left Column Wrapper -->
       <div
         class="footer__left-column display-flex flex-direction-column gap-2rem"
       >
@@ -116,10 +118,35 @@ import Logo from "../components/Logo.astro";
       </div>
       <!-- Footer Nav Links -->
       <nav class="footer__nav">
-        <a href="/" class="footer__nav-item">Home</a>
-        <a href="/about" class="footer__nav-item">About</a>
-        <a href="/contact" class="footer__nav-item">Contact</a>
+        <div class="footer__nav-item-wrapper">
+          <a href="/" class="footer__nav-item">Home</a>
+          <a href="/about" class="footer__nav-item">About</a>
+          <a href="/pricing" class="footer__nav-item">Pricing</a>
+          <a href="/contact" class="footer__nav-item">Contact</a>
+        </div>
+        <div class="footer__nav-item-wrapper">
+          <a href="" class="footer__nav-item">Login</a>
+          <div class="button-wrapper">
+            <Button size="small" href="/contact">Request Demo</Button>
+          </div>
+        </div>
       </nav>
+    </div>
+    <div class="footer__bottom-layout">
+      <div class="footer__divider"></div>
+      <div class="footer__details-wrapper">
+        <div class="footer__details__company">
+          © <span class="year">2022</span> Popcandi AI. All rights reserved.
+        </div>
+        <div class="footer__details__legal-wrapper">
+          <a href="/privacy-policy" class="footer__details__legal"
+            >Privacy Policy</a
+          >
+          <a href="/terms-of-service" class="footer__details__legal"
+            >Terms of Service</a
+          >
+        </div>
+      </div>
     </div>
   </div>
 </footer>
@@ -128,12 +155,16 @@ import Logo from "../components/Logo.astro";
   /* Footer Styles */
   .footer {
     color: var(--theme-text-light);
-    background-color: var(--theme-bg--dark-3);
+    background-color: var(--theme-bg-dark-3);
   }
 
   /* Footer grid component */
-  .footer__grid.grid-3 {
-    align-items: center;
+  .footer__layout {
+    display: flex;
+    flex-direction: row;
+    gap: -var(--gap-2rem);
+    justify-content: space-between;
+    width: 100%;
   }
 
   /* Footer Logo  */
@@ -151,9 +182,17 @@ import Logo from "../components/Logo.astro";
   /* Footer navigation links */
   .footer__nav {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: var(--grid-gap-1rem);
+    flex-wrap: wrap;
+    /* grid-template-columns: 1fr 1fr;
+    justify-content: start; */
+    column-gap: var(--gap-3rem);
+    row-gap: var(--gap-1rem);
+  }
+
+  .footer__nav-item-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-1rem);
   }
 
   .footer__nav-item {
@@ -183,10 +222,41 @@ import Logo from "../components/Logo.astro";
     opacity: 0.8;
   }
 
+  /* Footer Bottom Layout */
+
+  .footer__bottom-layout {
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--size-4rem);
+  }
+
+  /* Footer Divider */
+  .footer__divider {
+    width: 100%;
+    background-color: var(--border-color-light);
+    height: 1px;
+    margin-bottom: var(--size-1rem);
+  }
+
+  .footer__details-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+
   /* Responsive Styles */
-  @media (max-width: 991px) {
-    .footer__grid {
-      text-align: center;
+  @media (max-width: 640px) {
+    .footer__layout {
+      flex-direction: column;
+      gap: var(--gap-3rem);
     }
   }
 </style>
+
+<!-- Ensures the year stays insync -->
+
+<script>
+  const yearElement = document.querySelector(".year");
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear().toString();
+  }
+</script>

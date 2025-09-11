@@ -148,3 +148,189 @@ const target = newTab ? "_blank" : undefined;
     </button>
   )
 }
+<style>
+  /* =======================================================
+BUTTONS
+========================================================== */
+  :root {
+    /*============ Primary Button Styles ===============*/
+
+    /* Primary default button border color */
+    --button-border: transparent;
+
+    /* Primary default button background color */
+    --button-background: var(--theme-gradient-dark);
+
+    /* Primary default button text color */
+    --button-text: var(--theme-text-light);
+
+    /* Primary button border color on hover */
+    --button-border-hover: var(--color-neutral-white);
+
+    /* Primary button background color on hover */
+    --button-background-hover: transparent;
+
+    /* Primary button text color on hover */
+    --button-text-hover: var(--theme-text-light);
+
+    /*============ Secondary Button Styles ===============*/
+
+    /* Secondary button border color */
+    --button-secondary-border: var(--border-color-light);
+
+    /* Secondary button background color */
+    --button-secondary-background: transparent;
+
+    /* Secondary button text color */
+    --button-secondary-text: var(--theme-text-dark);
+
+    /* Secondary button border color on hover */
+    --button-secondary-border-hover: var(--color-neutral-white);
+
+    /* Secondary button background color on hover */
+    --button-secondary-background-hover: var(--color-neutral-white);
+
+    /* Secondary button text color on hover */
+    --button-secondary-text-hover: var(--theme-text-alternate);
+
+    /*============ Text Button Styles  ===============*/
+
+    /* Text button text color */
+    --button-text-text: var(--theme-text-light);
+
+    /* Text button text color on hover */
+    --button-text-text-hover: var(--color-neutral-white);
+  }
+
+  /* ========================================================
+   BUTTON STYLES
+   ======================================================== */
+
+  /* Primary Button */
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: normal;
+    border: var(--border-width-main) solid var(--button-border);
+    border-radius: var(--radius-main);
+    background: var(--button-background);
+    background-clip: padding-box; /* ⟵ key: clip gradient to inside of border / padding box */
+    -webkit-mask-image: -webkit-radial-gradient(
+      white,
+      black
+    ); /* Safari Fix for gradients */
+    font-family: var(--font-primary);
+    color: var(--button-text);
+    font-size: var(--text-regular-size);
+    font-weight: var(--text-regular-weight);
+    text-align: center;
+    padding: 0.75rem 1.5rem;
+    transition:
+      border 300ms ease,
+      color 300ms ease,
+      background-color 300ms ease;
+    position: relative;
+  }
+
+  /* Primary Button Hover */
+
+  .button:hover {
+    border-color: var(--button-border-hover);
+    background-color: var(--button-background-hover);
+    color: var(--button-text-hover);
+  }
+
+  /* Primary Button Sizes */
+
+  .button.is-small {
+    padding: 0.55rem 1.25rem;
+  }
+
+  .button.is-large {
+    padding: 1rem 2rem;
+  }
+
+  /* Secondary Button */
+
+  .button.is-secondary {
+    border: var(--border-width-main) solid var(--button-secondary-border);
+    background-color: var(--button-secondary-background);
+    font-family: var(--font-primary);
+    color: var(--button-secondary-text);
+    padding: 0.75rem 1.5rem;
+  }
+
+  /* Secondary Button Hover */
+
+  .button.is-secondary:hover {
+    border-color: var(--button-secondary-border-hover);
+    background-color: var(--button-secondary-background-hover);
+    color: var(--button-secondary-text-hover);
+  }
+
+  /* Secondary Button Sizes */
+
+  .button.is-secondary.is-small {
+    padding: 0.55rem 1.25rem;
+  }
+
+  .button.is-secondary.is-large {
+    padding: 1rem 2rem;
+  }
+
+  /* Button with Icon */
+
+  .button.is-icon {
+    gap: 0.5rem;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    display: flex;
+    position: relative;
+  }
+
+  /* Text Only Button */
+
+  .button.is-text {
+    color: var(--button-text-text);
+    background-color: transparent;
+    border: 2px solid transparent;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0;
+  }
+
+  /* Text Only Button Hover */
+
+  .button.is-text:hover {
+    color: var(--button-text-text-hover);
+  }
+
+  /* Text Only Button with Icon */
+
+  .button.is-icon.is-text {
+    color: var(--button-text-text);
+    transition:
+      opacity 300ms ease,
+      color 300ms ease;
+  }
+
+  /* Text Only Button with Icon Hover */
+  .button.is-icon.is-text:hover {
+    color: var(--button-text-text-hover);
+    opacity: 0.75;
+  }
+
+  /* Breadcrumb Button */
+
+  .button.is-icon.is-text.is-breadcrumb {
+    grid-column-gap: 0.25rem;
+    grid-row-gap: 0.25rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-weight: 400;
+  }
+</style>
