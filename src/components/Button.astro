@@ -20,6 +20,23 @@ interface Props {
   size?: "small" | "large" | "default";
 
   /**
+   * Add an id to a button
+   * Be sure to wrap the id inside the {} in ""
+   *
+   * Example:
+   * ```astro
+   * id={"btn-id"}
+   * ```
+   */
+  id?: string;
+
+  /**
+   * Allows you to add an attribute to the button
+   * Be sure to wrap the value in quotes
+   */
+  [key: string]: any;
+
+  /**
    * Apply breadcrumb styling (smaller text, tighter spacing).
    * No need to pass true. This is a simple on/off flag (true/false).
    * Requires `variant="text"` and `icon` for breadcrumb styles to apply.
@@ -101,6 +118,7 @@ const {
   icon = false,
   class: extra = "",
   type = "button",
+  id,
   ...rest
 } = Astro.props;
 
@@ -135,13 +153,13 @@ const target = newTab ? "_blank" : undefined;
 
 {
   href ? (
-    <a href={href} class={classes} target={target} rel={rel} {...rest}>
+    <a href={href} class={classes} target={target} rel={rel} id={id} {...rest}>
       <slot name="icon-left" />
       <slot />
       <slot name="icon-right" />
     </a>
   ) : (
-    <button class={classes} type={type} disabled={disabled} {...rest}>
+    <button class={classes} type={type} disabled={disabled} id={id} {...rest}>
       <slot name="icon-left" />
       <slot />
       <slot name="icon-right" />
@@ -209,29 +227,44 @@ BUTTONS
   /* Primary Button */
 
   .button {
+    /* Display */
     display: inline-flex;
     align-items: center;
     justify-content: center;
     white-space: normal;
-    border: var(--border-width-main) solid var(--button-border);
+    position: relative;
+
+    /* Padding */
+    padding: 0.75rem 1.5rem;
+
+    /* border radius */
     border-radius: var(--radius-main);
+
+    /* Border Size & Color */
+    border: var(--border-width-main) solid var(--button-border);
+
+    /* Background */
     background: var(--button-background);
     background-clip: padding-box; /* ⟵ key: clip gradient to inside of border / padding box */
     -webkit-mask-image: -webkit-radial-gradient(
       white,
       black
     ); /* Safari Fix for gradients */
+
+    /* font properties */
     font-family: var(--font-primary);
-    color: var(--button-text);
     font-size: var(--text-regular-size);
     font-weight: var(--text-regular-weight);
+    color: var(--button-text);
     text-align: center;
-    padding: 0.75rem 1.5rem;
+
+    /* Transitions for animations */
     transition:
       border 300ms ease,
       color 300ms ease,
+      opacity 300ms ease,
       background-color 300ms ease;
-    position: relative;
+    /* Positioning */
   }
 
   /* Primary Button Hover */
@@ -240,6 +273,7 @@ BUTTONS
     border-color: var(--button-border-hover);
     background-color: var(--button-background-hover);
     color: var(--button-text-hover);
+    opacity: 0.8;
   }
 
   /* Primary Button Sizes */

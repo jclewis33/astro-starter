@@ -85,6 +85,45 @@
    ========================================================
   When creating these make sure to use background-image */
 
+/* Gradient to add to text */
+.gradient-text {
+  background-image: var(--theme-gradient-dark);
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-repeat: no-repeat;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Gradient text + GSAP SplitText support */
+.gradient-text .line-mask,
+.gradient-text .line,
+.gradient-text .line > *,
+.gradient-text span,
+.gradient-text .word,
+.gradient-text .char {
+  background-image: inherit; /* pull gradient from parent */
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-repeat: no-repeat;
+  -webkit-text-fill-color: transparent; /* Safari/iOS */
+  color: transparent;
+  display: inline-block; /* reliable clipping */
+}
+
+/* Color Gradients - Change out the variable and name. Here as an example. */
+.gradient-light-blue {
+  background-image: var(--theme-gradient-light-blue);
+  background-repeat: no-repeat;
+}
+
+.gradient-light-blue-reverse {
+  background-image: var(--theme-gradient-light-blue-reverse);
+  background-repeat: no-repeat;
+}
+
+/* Based on Gradients Start and End colors in Variables File */
 [gradient="1"],
 u-gradient-1 {
   background-image: linear-gradient(
@@ -93,6 +132,8 @@ u-gradient-1 {
     var(--_theme---gradient-1--end-color) 100%
   );
 }
+
+/* Based on Gradients Start and End colors in Variables File */
 [gradient="2"] {
   background-image: linear-gradient(
     135deg,
