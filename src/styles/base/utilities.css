@@ -44,3 +44,16 @@ button {
 button:not(:disabled) {
   cursor: pointer;
 }
+
+/* Button reset so you can use a button to wrap items without any button styling. This allows for the accessibility of buttons while ensuring no styles are applied */
+.u-button-reset {
+  background: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  line-height: 0; /* icons often look better with tight line-height */
+  cursor: pointer;
+  height: fit-content;
+}
