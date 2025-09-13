@@ -194,7 +194,7 @@ BUTTONS
     /*============ Secondary Button Styles ===============*/
 
     /* Secondary button border color */
-    --button-secondary-border: var(--border-color-light);
+    --button-secondary-border: var(--border-color-dark);
 
     /* Secondary button background color */
     --button-secondary-background: transparent;
@@ -209,16 +209,15 @@ BUTTONS
     --button-secondary-background-hover: var(--color-neutral-white);
 
     /* Secondary button text color on hover */
-    --button-secondary-text-hover: var(--theme-text-alternate);
+    --button-secondary-text-hover: var(--theme-text-dark);
 
-    /*============ Text Button Styles  ===============*/
+     /*============ Text Button Styles  ===============*/
 
     /* Text button text color */
-    --button-text-text: var(--theme-text-light);
+    --button-text-text: var(--theme-text-dark);
 
     /* Text button text color on hover */
-    --button-text-text-hover: var(--color-neutral-white);
-  }
+    --button-text-text-hover: var(--theme-text-dark);
 
   /* ========================================================
    BUTTON STYLES
@@ -291,11 +290,11 @@ BUTTONS
   .button.is-secondary {
     border: var(--border-width-main) solid var(--button-secondary-border);
     background-color: var(--button-secondary-background);
+    background-image: none; /*Added due to background-image being added to button. Remove if not needed.*/
     font-family: var(--font-primary);
     color: var(--button-secondary-text);
     padding: 0.75rem 1.5rem;
   }
-
   /* Secondary Button Hover */
 
   .button.is-secondary:hover {
@@ -322,7 +321,6 @@ BUTTONS
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    display: flex;
     position: relative;
   }
 
@@ -343,7 +341,7 @@ BUTTONS
     color: var(--button-text-text-hover);
   }
 
-  /* Text Only Button with Icon */
+ /* Text Only Button with Icon */
 
   .button.is-icon.is-text {
     color: var(--button-text-text);
