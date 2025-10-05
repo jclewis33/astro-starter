@@ -57,3 +57,16 @@ button:not(:disabled) {
   cursor: pointer;
   height: fit-content;
 }
+
+/* Screen Reader only utility. Use when you want to provide texts to screen readers but don't want it to visually show on the page */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
