@@ -39,7 +39,7 @@ Calculator settings:
   --display-xl-min: 3;
   --display-xl-max: 6;
   /* fluid size */
-  --display-xl: clamp(
+  --display-xl-size: clamp(
     var(--display-xl-min) * 1rem,
     (
       (
@@ -66,7 +66,7 @@ Calculator settings:
   /* --display-lg: clamp(3rem, 3.612vw + 1.916rem, 5rem); */
   --display-lg-min: 3;
   --display-lg-max: 5;
-  --display-lg: clamp(
+  --display-lg-size: clamp(
     var(--display-lg-min) * 1rem,
     (
       (
@@ -93,7 +93,7 @@ Calculator settings:
   /* --display-md: clamp(3rem, 2.709vw + 2.187rem, 4.5rem); */
   --display-md-min: 3;
   --display-md-max: 4.5;
-  --display-md: clamp(
+  --display-md-size: clamp(
     var(--display-md-min) * 1rem,
     (
       (
@@ -120,7 +120,7 @@ Calculator settings:
   /* --display-sm: clamp(2.75rem, 2.257vw + 2.073rem, 4rem); */
   --display-sm-min: 2.75;
   --display-sm-max: 4;
-  --display-sm: clamp(
+  --display-sm-size: clamp(
     var(--display-sm-min) * 1rem,
     (
       (
