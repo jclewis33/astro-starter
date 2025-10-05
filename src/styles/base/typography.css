@@ -8,6 +8,7 @@ h1 {
   font-family: var(--h1-font-family);
   line-height: var(--h1-line-height);
   font-weight: var(--h1-weight);
+  text-transform: var(--h1-text-transform);
 }
 
 h2 {
@@ -15,6 +16,7 @@ h2 {
   font-family: var(--h2-font-family);
   line-height: var(--h2-line-height);
   font-weight: var(--h2-weight);
+  text-transform: var(--h2-text-transform);
 }
 
 h3 {
@@ -22,6 +24,7 @@ h3 {
   font-family: var(--h3-font-family);
   line-height: var(--h3-line-height);
   font-weight: var(--h3-weight);
+  text-transform: var(--h3-text-transform);
 }
 
 h4 {
@@ -29,6 +32,7 @@ h4 {
   font-family: var(--h4-font-family);
   line-height: var(--h4-line-height);
   font-weight: var(--h4-weight);
+  text-transform: var(--h4-text-transform);
 }
 
 h5 {
@@ -36,6 +40,7 @@ h5 {
   font-family: var(--h5-font-family);
   line-height: var(--h5-line-height);
   font-weight: var(--h5-weight);
+  text-transform: var(--h5-text-transform);
 }
 
 h6 {
@@ -43,6 +48,7 @@ h6 {
   font-family: var(--h6-font-family);
   line-height: var(--h6-line-height);
   font-weight: var(--h6-weight);
+  text-transform: var(--h6-text-transform);
 }
 
 /*======== Heading utility classes for non-semantic elements ==============*/
@@ -52,6 +58,7 @@ h6 {
   font-family: var(--h1-font-family);
   line-height: var(--h1-line-height);
   font-weight: var(--h1-weight);
+  text-transform: var(--h1-text-transform);
 }
 
 .heading-h2 {
@@ -59,6 +66,7 @@ h6 {
   font-family: var(--h2-font-family);
   line-height: var(--h2-line-height);
   font-weight: var(--h2-weight);
+  text-transform: var(--h2-text-transform);
 }
 
 .heading-h3 {
@@ -66,6 +74,7 @@ h6 {
   font-family: var(--h3-font-family);
   line-height: var(--h3-line-height);
   font-weight: var(--h3-weight);
+  text-transform: var(--h3-text-transform);
 }
 
 .heading-h4 {
@@ -73,6 +82,7 @@ h6 {
   font-family: var(--h4-font-family);
   line-height: var(--h4-line-height);
   font-weight: var(--h4-weight);
+  text-transform: var(--h4-text-transform);
 }
 
 .heading-h5 {
@@ -80,6 +90,7 @@ h6 {
   font-family: var(--h5-font-family);
   line-height: var(--h5-line-height);
   font-weight: var(--h5-weight);
+  text-transform: var(--h5-text-transform);
 }
 
 .heading-h6 {
@@ -87,9 +98,10 @@ h6 {
   font-family: var(--h6-font-family);
   line-height: var(--h6-line-height);
   font-weight: var(--h6-weight);
+  text-transform: var(--h6-text-transform);
 }
 
-.eyebrow {
+.heading-eyebrow {
   font-size: var(--eyebrow-size);
   font-family: var(--eyebrow-font-family);
   line-height: var(--eyebrow-line-height);
@@ -105,6 +117,7 @@ h6 {
   font-family: var(--display-xl-font-family);
   line-height: var(--display-xl-line-height);
   font-weight: var(--display-xl-weight);
+  text-transform: var(--display-xl-text-transform);
 }
 
 .display-lg {
@@ -112,6 +125,7 @@ h6 {
   font-family: var(--display-lg-font-family);
   line-height: var(--display-lg-line-height);
   font-weight: var(--display-lg-weight);
+  text-transform: var(--display-lg-text-transform);
 }
 
 .display-md {
@@ -119,6 +133,7 @@ h6 {
   font-family: var(--display-md-font-family);
   line-height: var(--display-md-line-height);
   font-weight: var(--display-md-weight);
+  text-transform: var(--display-md-text-transform);
 }
 
 .display-sm {
@@ -126,6 +141,7 @@ h6 {
   font-family: var(--display-sm-font-family);
   line-height: var(--display-sm-line-height);
   font-weight: var(--display-sm-weight);
+  text-transform: var(--display-sm-text-transform);
 }
 
 /* ===================================================
