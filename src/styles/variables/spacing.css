@@ -33,11 +33,12 @@
   --padding-small: clamp(2rem, 3.229vw + 1.243rem, 4rem);
   --padding-medium: clamp(3rem, 3.229vw + 2.243rem, 5rem);
   --padding-large: clamp(4rem, 4.844vw + 2.865rem, 7rem);
+  --padding-vertical-sitewide: var(--padding-large);
 
   /* Section Padding No Clamp */
   --padding-none: 0rem;
   --padding-section-medium: 5rem;
-  --padding-section-sitewide: 7rem;
+
   --padding-section-none: 0rem;
 
   /* ========== MARGIN ========= */

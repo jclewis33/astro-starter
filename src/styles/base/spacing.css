@@ -5,8 +5,8 @@ NOTE: These are currently tied to the padding variables in the spacing.css varia
 
 /* Standard vertical padding - padding for most sections */
 .padding-vertical-sitewide {
-  padding-top: var(--padding-large);
-  padding-bottom: var(--padding-large);
+  padding-top: var(--padding-vertical-sitewide);
+  padding-bottom: var(--padding-vertical-sitewide);
 }
 
 /* Large vertical padding - for major sections */
