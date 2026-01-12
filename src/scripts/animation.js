@@ -309,6 +309,8 @@ function initScrollAnimations() {
     const triggerEl = trigger.vars.trigger;
     if (
       triggerEl &&
+      triggerEl.nodeType === 1 &&
+      typeof triggerEl.matches === "function" &&
       triggerEl.matches(
         "[data-fade-in], [data-fade-up], [data-fade-list], [data-fade], [data-splittext], [data-split-text]"
       )
