@@ -11,11 +11,27 @@ data-prevent-flicker = "true"
 ///////////////////// REMOVE DATA PREVENT FLICKER / REGISTER PLUGINS ////////////////////
 
 // If GSAP doesn't run show hidden elements with data-prevent-flicker = true on them
+function isGsapReady() {
+  return (
+    typeof window !== "undefined" &&
+    typeof window.gsap !== "undefined" &&
+    typeof window.ScrollTrigger !== "undefined" &&
+    typeof window.SplitText !== "undefined"
+  );
+}
+
+function registerGsapPlugins() {
+  if (!isGsapReady()) {
+    document.documentElement.classList.add("gsap-not-found");
+    console.warn("GSAP plugins not found; skipping animation initialization.");
+    return false;
+  }
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+  return true;
+}
 
 document.addEventListener("DOMContentLoaded", () => {
-  if (typeof window.gsap === "undefined")
-    document.documentElement.classList.add("gsap-not-found");
-  gsap.registerPlugin(ScrollTrigger, SplitText);
+  registerGsapPlugins();
 });
 ///////////////////// NAVBAR ANIMATION ////////////////
 
@@ -32,30 +48,32 @@ const navbar = document.querySelector('[data-animation="navbar"]');
     onLeaveBack: () => removeStyles(navbar),
   });*/
 
-// Scroll down 100px - used to initially move the scrollbar off screen. Will bring the navbar back when scrolled back to the top.
-ScrollTrigger.create({
-  start: "top -100px",
-  end: 99999,
-  // moves the navbar off screen when page scrolled down 100px
-  onEnter: () => gsap.to(navbar, { y: "-100%", duration: 0.3 }),
-  // moves the navbar back on screen when page scrolled back past the 100px mark
-  onLeaveBack: () => gsap.to(navbar, { y: "0%", duration: 0.3 }),
-});
+if (navbar && isGsapReady()) {
+  // Scroll down 100px - used to initially move the scrollbar off screen. Will bring the navbar back when scrolled back to the top.
+  ScrollTrigger.create({
+    start: "top -100px",
+    end: 99999,
+    // moves the navbar off screen when page scrolled down 100px
+    onEnter: () => gsap.to(navbar, { y: "-100%", duration: 0.3 }),
+    // moves the navbar back on screen when page scrolled back past the 100px mark
+    onLeaveBack: () => gsap.to(navbar, { y: "0%", duration: 0.3 }),
+  });
 
-// When scrolled past 100px mark. Uses self.direction to determine whether user is scrolling down the page or back up the page. Depending on direction, the navbar will move out of view or move into view.
-ScrollTrigger.create({
-  start: "top -100px",
-  end: 99999,
-  onUpdate: (self) => {
-    // When page is scrolled up, navbar moves into view
-    if (self.direction === -1) {
-      gsap.to(navbar, { y: "0%", duration: 0.3 });
-      // When page is scrolled down, navbar is moved out of view. Also checks to see if scroll position is greater than 100px from the top of the page.
-    } else if (self.direction === 1 && self.scroll() > 100) {
-      gsap.to(navbar, { y: "-100%", duration: 0.3 });
-    }
-  },
-});
+  // When scrolled past 100px mark. Uses self.direction to determine whether user is scrolling down the page or back up the page. Depending on direction, the navbar will move out of view or move into view.
+  ScrollTrigger.create({
+    start: "top -100px",
+    end: 99999,
+    onUpdate: (self) => {
+      // When page is scrolled up, navbar moves into view
+      if (self.direction === -1) {
+        gsap.to(navbar, { y: "0%", duration: 0.3 });
+        // When page is scrolled down, navbar is moved out of view. Also checks to see if scroll position is greater than 100px from the top of the page.
+      } else if (self.direction === 1 && self.scroll() > 100) {
+        gsap.to(navbar, { y: "-100%", duration: 0.3 });
+      }
+    },
+  });
+}
 
 // Function that applies styles to navbar.
 // Since this navbar has a dark and light mode, different colors area applied based on dark or light mode. Check occurs in boxShadowColor and backgroundColor to determine if the light-mode class is applied.
@@ -91,50 +109,74 @@ ScrollTrigger.create({
 
 ///////////////////// SPLITTEXT ANIMATION ////////////////
 
+const splitInstances = new WeakMap();
+
 function initSplitText() {
+  if (!isGsapReady()) {
+    return;
+  }
+  if (!document.fonts || !document.fonts.ready) {
+    initSplitTextNow();
+    return;
+  }
   // Make sure to wait for fonts to load to avoid layout shifts
   document.fonts.ready.then(() => {
-    // select all elements tagged for split-text
-    const elems = gsap.utils.toArray(
-      "[data-splittext], [data-split-text='true']"
-    );
+    initSplitTextNow();
+  });
+}
 
-    elems.forEach((el) => {
-      // make sure the element is visible before split
-      gsap.set(el, { autoAlpha: 1 });
+function initSplitTextNow() {
+  // select all elements tagged for split-text
+  const elems = gsap.utils.toArray(
+    "[data-splittext], [data-split-text='true']"
+  );
 
-      // split + animate when split occurs
-      SplitText.create(el, {
-        type: "words, lines",
-        autoSplit: true,
-        mask: "lines",
-        linesClass: "line",
-        onSplit: (self) => {
-          // `self.lines` is an array of <div class="line"> wrappers
-          const tween = gsap.from(self.lines, {
-            duration: 1.6,
-            yPercent: 100,
-            opacity: 0,
-            stagger: 0.1,
-            ease: "expo.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 75%",
-              end: "bottom 50%",
-              once: true, // only play once
-              // markers: true,    // enable to debug trigger points
-            },
-          });
-          return tween; // return so SplitText knows about this tween
-        },
-      });
+  elems.forEach((el) => {
+    // Prevent double-splitting if this runs multiple times
+    const existing = splitInstances.get(el);
+    if (existing && typeof existing.revert === "function") {
+      existing.revert();
+      splitInstances.delete(el);
+    }
+
+    // make sure the element is visible before split
+    gsap.set(el, { autoAlpha: 1 });
+
+    // split + animate when split occurs
+    const instance = SplitText.create(el, {
+      type: "words, lines",
+      autoSplit: true,
+      mask: "lines",
+      linesClass: "line",
+      onSplit: (self) => {
+        // `self.lines` is an array of <div class="line"> wrappers
+        const tween = gsap.from(self.lines, {
+          duration: 1.6,
+          yPercent: 100,
+          opacity: 0,
+          stagger: 0.1,
+          ease: "expo.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 75%",
+            end: "bottom 50%",
+            once: true, // only play once
+            // markers: true,    // enable to debug trigger points
+          },
+        });
+        return tween; // return so SplitText knows about this tween
+      },
     });
+    splitInstances.set(el, instance);
   });
 }
 
 ///////////////////// FADE-IN ANIMATION ////////////////
 
 function initFadeIn() {
+  if (!isGsapReady()) {
+    return;
+  }
   const elems = gsap.utils.toArray("[data-fade-in], [data-fade='in']");
   elems.forEach((el) => {
     try {
@@ -175,6 +217,9 @@ function initFadeIn() {
 ///////////////////// FADE-UP ANIMATION ////////////////
 
 function initFadeUp() {
+  if (!isGsapReady()) {
+    return;
+  }
   const elems = gsap.utils.toArray("[data-fade-up], [data-fade='up']");
   elems.forEach((el) => {
     try {
@@ -219,6 +264,9 @@ function initFadeUp() {
 ///////////////////// FADE-LIST ANIMATION ////////////////
 
 function initFadeList() {
+  if (!isGsapReady()) {
+    return;
+  }
   gsap.utils.toArray("[data-fade-list]").forEach((list) => {
     try {
       // Get custom values if specified
@@ -267,6 +315,9 @@ function initFadeList() {
 
 // Manual ScrollTrigger refresh setup - more efficient approach
 function initManualRefresh() {
+  if (!isGsapReady()) {
+    return;
+  }
   const refreshElements = gsap.utils.toArray("[data-refresh]");
   refreshElements.forEach((refreshElement) => {
     try {
@@ -304,6 +355,9 @@ function initManualRefresh() {
 
 // Master init function
 function initScrollAnimations() {
+  if (!isGsapReady()) {
+    return;
+  }
   // Only kill animation ScrollTriggers, preserve pins and other ScrollTriggers
   ScrollTrigger.getAll().forEach((trigger) => {
     const triggerEl = trigger.vars.trigger;
@@ -332,6 +386,12 @@ function initScrollAnimations() {
 
 // Initialize on page load
 window.addEventListener("load", () => {
+  if (!registerGsapPlugins()) {
+    return;
+  }
   initScrollAnimations();
   console.log("Scroll animations initialized");
 });
+
+// For CMS-injected or dynamically rendered content, call this after new nodes are in the DOM.
+window.initScrollAnimations = initScrollAnimations;
