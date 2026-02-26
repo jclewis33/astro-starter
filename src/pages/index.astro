@@ -1,26 +1,720 @@
 ---
-// Components
-import Image from "astro/components/Image.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import TestimonialsSilder from "../components/TestimonialsSilder.astro";
-import CTASectionImage from "../components/CTASectionImage.astro";
-import FAQ from "../components/FAQ.astro";
+import Button from "../components/Button.astro";
 // Styles
 import "../styles/pages/home.css";
 
-// Assets - Images
+const heroSliderImages = [
+  { src: "/images/Slider2.avif", alt: "Featured work preview" },
+  { src: "/images/synergy-sparq-slider-2_1.avif", alt: "Synergy Sparq site" },
+  {
+    src: "/images/PopCandi-AI-Case-Study_3.avif",
+    alt: "PopCandi AI case study",
+  },
+  {
+    src: "/images/Slider-4---Satterfield_1.avif",
+    alt: "Satterfield Builders site",
+  },
+  { src: "/images/Slider1.avif", alt: "B2B SaaS landing page" },
+  {
+    src: "/images/MacBook-Pro-16-inch-mockup-on-a-textured-tabletop-with-dramatic-lighting-Mockuuups-Studio_1.avif",
+    alt: "MacBook Pro product mockup",
+  },
+];
+
+const caseStudies = [
+  {
+    title: "Wizard Perks",
+    description:
+      "A <strong>visually stunning, animation-rich landing page</strong> that positions Wizard Perks as a premium employee perks solution for enterprise clients.",
+    href: "case-study/wizard-perks-web-development-for-a-ai-powered-platform.html",
+    image: "/images/Home-hero-Wizard-Perks---option2.avif",
+    alt: "Wizard Perks case study",
+  },
+  {
+    title: "PopCandi AI",
+    description:
+      "A custom Astro marketing site and SaaS AI driven recruiting platform designed and developed.",
+    href: "case-study/popcandi-ai-marketing-and-saas-platform.html",
+    image: "/images/PopCandi-AI-Case-Study_1.avif",
+    alt: "PopCandi AI case study",
+  },
+  {
+    title: "TreeRing",
+    description:
+      "A custom Webflow site migrated and developed for TreeRing in partnership with The Working Assembly.",
+    href: "case-study/treering-memory-preseveration-platform.html",
+    image: "/images/Treering-.avif",
+    alt: "TreeRing case study",
+  },
+  {
+    title: "Ash Wellness",
+    description:
+      "We partnered with The Working Assembly to create a custom Webflow site for Ash Wellness.",
+    href: "case-study/ash-wellness-health-testing-platform.html",
+    image: "/images/Ash-Wellness-Case-Study_1.avif",
+    alt: "Ash Wellness case study",
+  },
+  {
+    title: "Leverture",
+    description:
+      "We partnered with Leverture on a comprehensive website redesign and migration from Wordpress to Webflow.",
+    href: "case-study/leverture-web-design-and-development-for-an-agency.html",
+    image: "/images/Leveture---Home-Hero.avif",
+    alt: "Leverture case study",
+  },
+  {
+    title: "Synergy Sparq",
+    description:
+      "We revitalized their staffing firm website to attract quality candidates and employers. Continuing to support through monthly SEO.",
+    href: "case-study/synergy-sparq-web-design-and-seo-for-a-staffing-firm.html",
+    image: "/images/synergy-sparq-slider-2_1.avif",
+    alt: "Synergy Sparq case study",
+  },
+  {
+    title: "Circle T Specialties",
+    description:
+      "Created an engaging online showcase for their window treatment startup that attracts both consumers and high-end commercial operations.",
+    href: "case-study/circle-t-specialities-building-a-brand-from-the-ground-up.html",
+    image:
+      "/images/MacBook-Pro-16-inch-mockup-on-a-textured-tabletop-with-dramatic-lighting-Mockuuups-Studio_1.avif",
+    alt: "Circle T Specialties case study",
+  },
+  {
+    title: "Satterfield Builders",
+    description:
+      "We revitalized Satterfield Builders' online presence with a migration and redesign, allowing them to increase organic traffic 530%.",
+    href: "case-study/satterfield-builders-website-redesign-for-modern-home-builder.html",
+    image: "/images/Slider-4---Satterfield_1.avif",
+    alt: "Satterfield Builders case study",
+  },
+  {
+    title: "Connally Consulting",
+    description:
+      "We increased conversions by migrating and streamlining the user experience for a leadership coach. As well as built a scalable website for continued growth.",
+    href: "case-study/connally-consulting-designing-a-website-for-a-leadership-coach.html",
+    image: "/images/Slider-4.avif",
+    alt: "Connally Consulting case study",
+  },
+];
+
+const processSteps = [
+  {
+    title: "Know Your Market",
+    description:
+      "Deep ICP research to identify who actually buys and why they choose you over competitors.",
+  },
+  {
+    title: "Nail Your Message",
+    description:
+      "Strategic positioning and conversion copy that speaks directly to your ideal customer's pain points and goals.",
+  },
+  {
+    title: "Generate Qualified Leads",
+    description:
+      "Conversion-optimized Webflow sites with built-in SEO that attract the right customers and turn visitors into demos.",
+  },
+];
+
+const services = [
+  {
+    title: "Strategic Web Design",
+    description:
+      "Clarity on who you serve and why they should care, strategic copy, and conversion focused web design.",
+    href: "services/webflow-web-design.html",
+    cta: "Strategic Web Design",
+    image: "/images/Slider3.avif",
+  },
+  {
+    title: "Custom Development",
+    description:
+      "Fast, professional, no templates. Built around what makes you different.",
+    href: "services/webflow-web-development.html",
+    cta: "Start Building",
+    image: "/images/Slider2.avif",
+  },
+  {
+    title: "SEO Foundation",
+    description:
+      "Technical and on-page from day one so you're discoverable where it counts.",
+    href: "services/webflow-seo-expert.html",
+    cta: "Boost My Rankings",
+    image: "/images/project-goals-and-challenges-for-synergy-sparq.avif",
+  },
+  {
+    title: "Brand Visuals",
+    description: "Original images that reinforce your story.",
+    href: "services/website-professional-photography.html",
+    cta: "Reinforce Your Story",
+    image: "/images/photography-cta.webp",
+  },
+];
+
+const howItWorks = [
+  {
+    title: "01. Discover",
+    description:
+      "90-minute strategy session. We interview you, research your competitors, and document your ICP. Deliverable: Positioning brief.",
+  },
+  {
+    title: "02. Design & Build",
+    description:
+      "Custom Webflow design with strategic messaging. Two revision rounds included. You'll see progress weekly.",
+  },
+  {
+    title: "03. Launch & Train",
+    description:
+      "We ship your site, record Loom tutorials for your team, and provide 30 days of launch support.",
+  },
+  {
+    title: "04. Grow & Optimize",
+    description:
+      "Your site is live, but we're not done. We offer ongoing maintenance, content updates, and conversion optimization to keep your site performing, because static sites don't build brands.",
+  },
+];
+
+const pricingBullets = [
+  "ICP discovery and strategic positioning",
+  "Custom Webflow design and development",
+  "Conversion-optimized messaging and structure",
+  "SEO foundation (technical + on-page)",
+  "Team training and documentation",
+  "30 days of post-launch support",
+];
+
+const faqs = [
+  {
+    question: "How long does it take to design and develop a website?",
+    answer:
+      "We build custom websites that are individually tailored to each client, which means the scope and size of each project is different. The average timeline for a design and build is 4-6 weeks. Projects that are strictly development oriented can be completed in 2 weeks or less. If you need a project completed quicker, get in touch. We have fully designed and built projects in less than 2 weeks (with a lot of coffee).",
+  },
+  {
+    question: "Why do you use Webflow over other builders like Wordpress?",
+    answer:
+      "Webflow is a powerful low-code builder. It allows us to build dynamic, scalable, and SEO friendly websites fast. It also doesn't come with the design limitations and headaches of other platforms. There are no plug-ins to manage and update, which makes our and your life easier, as well as it insures your website remains fully functional. Learn more about why we use Webflow.",
+  },
+  {
+    question: "Are the websites you build SEO friendly?",
+    answer:
+      "Absolutely. We use technical SEO best practices when building your site. As well as the copy we write is optimized around your target keywords. We work hard to provide you a solid foundation on which you can build an SEO campaign.",
+  },
+  {
+    question: "Why should I work with your agency?",
+    answer:
+      "Besides living and breathing design and development, we are Webflow experts. As well as we are able to do the jobs of multiple professionals. We not only excel in design and development, but we are able to help with brand strategy, copywriting, SEO, and photography. Avoid the hassle of finding, vetting, and communicating with multiple professionals. Let us be your one point of contact.",
+  },
+  {
+    question: "How much does a website cost?",
+    answer:
+      "Each project is priced differently depending on its scope and size as well as other factors such as timeline and integrations. But typically projects fall into a range from 15k - 5k. To get your custom bid, we like to have a introductory call. On the call, I'll learn about your business, your needs, and be able to make recommendations as well as provide you a quote. This is a 100% free no pressure call.",
+  },
+  {
+    question: "How do I get started with a website project?",
+    answer:
+      "We are excited you are considering working with us. The easiest way to get started with a project is for us to have an introductory call. Fill out our form to start the process of setting up that call. All our introductory calls are 100% free and no pressure. We see it as an opportunity to get to know each other to see if we would be a good fit to work together.",
+  },
+];
 ---
 
 <BaseLayout>
-  <!-- SECTION - Home Hero -->
-  <section class="home-hero padding-vertical-sitewide">
-    <div class="container">
-      <!-- Home Hero - Component -->
+  <main>
+    <section class="home-hero padding-vertical-sitewide">
+      <div class="container">
+        <div class="grid-2 gap-standard">
+          <div class="home-hero__content">
+            <p class="heading-eyebrow">Webflow Expert Agency</p>
+            <h1 class="display-lg margin-heading">
+              Conversion optimized Webflow sites
+              <span class="text-style-bold">
+                for B2B SaaS and funded startups</span
+              >
+            </h1>
+            <p class="text-size-large margin-paragraph">
+              Strategic Webflow websites that help funded startups
+              <strong> know their market</strong>, <strong
+                >nail their message</strong
+              >, and <strong>generate qualified leads</strong>.
+            </p>
+            <div class="button-wrapper-group">
+              <Button href="#contact-form">Book Your Free Strategy Call</Button>
+            </div>
+            <p class="text-size-small text-style-muted">
+              We'll confirm fit, outline options, and decide on next steps.
+            </p>
+            <div
+              class="home-hero__proof display-flex align-items-center gap-1rem margin-top-small"
+            >
+              <div class="text-size-regular text-style-bold">4.9-Star Avg</div>
+              <img
+                src="/images/Stars.png"
+                alt="Rating stars"
+                width="108"
+                height="20"
+              />
+              <img
+                src="/images/Avatars.webp"
+                alt="Client avatars"
+                width="210"
+                height="40"
+              />
+            </div>
+            <div class="margin-top-small">
+              <img
+                src="/images/Badge_Professional_Partner_White.svg"
+                alt="Webflow Professional Partner"
+                width="450"
+                height="70"
+              />
+            </div>
+          </div>
+          <div class="home-hero__media-grid grid-3 gap-1rem">
+            {
+              heroSliderImages.map((image) => (
+                <div class="media-card">
+                  <img src={image.src} alt={image.alt} loading="lazy" />
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
 
-      <!-- CTA -->
-      <CTASectionImage />
-      <!-- FAQ Component -->
-      <FAQ />
-    </div>
-  </section></BaseLayout
->
+    <section class="case-studies padding-vertical-sitewide">
+      <div class="container">
+        <h2 class="heading-h2 margin-heading">Work that Converts</h2>
+        <div class="case-studies__grid grid-3 gap-standard">
+          {
+            caseStudies.map((study) => (
+              <article class="case-study-card display-flex flex-direction-column gap-1rem">
+                <a class="case-study-card__media media-card" href={study.href}>
+                  <img src={study.image} alt={study.alt} loading="lazy" />
+                </a>
+                <div class="case-study-card__heading display-flex justify-content-between align-items-center">
+                  <h3 class="heading-h5">{study.title}</h3>
+                  <span class="text-style-muted">View case study</span>
+                </div>
+                <p class="text-size-regular" set:html={study.description} />
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="home-quote padding-vertical-sitewide">
+      <div class="container container-narrow">
+        <h2 class="heading-h3 margin-heading text-align-center">
+          It's not hard to launch a website. It's hard to stand out.
+        </h2>
+        <p class="text-size-medium text-align-center">
+          You know your product is different. You know it solves real problems.
+        </p>
+      </div>
+    </section>
+
+    <section id="about-approach" class="home-about padding-vertical-sitewide">
+      <div class="container">
+        <div class="grid-2 gap-standard">
+          <div class="media-card">
+            <img
+              src="/images/Results-Connally-Consulting.avif"
+              alt="Connally Consulting results"
+              loading="lazy"
+            />
+          </div>
+          <div>
+            <h2 class="heading-h3 margin-heading">But it's not clicking</h2>
+            <p class="text-size-medium">
+              When investors, customers, and competitors visit your site, they
+              don't see what you see. They don't feel the vision that keeps you
+              up at night.
+            </p>
+          </div>
+        </div>
+        <div class="grid-2 gap-standard margin-top-large">
+          <div>
+            <h2 class="heading-h3 margin-heading">And it's costing you</h2>
+            <p class="text-size-medium">
+              When a prospect visits your site and bounces in 5 seconds, you
+              don't just lose a lead-you lose the deal to a competitor whose
+              messaging was clearer.
+            </p>
+          </div>
+          <div class="media-card">
+            <img
+              src="/images/synergy-sparq-slider-4_1.avif"
+              alt="Synergy Sparq visual"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-process padding-vertical-sitewide">
+      <div class="container">
+        <div class="grid-2 gap-standard">
+          <div>
+            <p class="heading-eyebrow">The Solution</p>
+            <h2 class="heading-h2 margin-heading">
+              The M2M Lead Gen Framework
+            </h2>
+            <p class="text-size-medium">
+              We identify your ideal customer and create messaging that
+              resonates with their specific pain points, so your website
+              converts visitors into qualified leads, not just page views.
+            </p>
+          </div>
+          <div class="display-flex flex-direction-column gap-1-5rem">
+            {
+              processSteps.map((step) => (
+                <div class="process-step">
+                  <h3 class="heading-h5 margin-bottom-xsmall">{step.title}</h3>
+                  <p class="text-size-regular">{step.description}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-result padding-vertical-sitewide">
+      <div class="container container-narrow">
+        <h2 class="heading-h3 margin-heading text-align-center">
+          The result is more qualified leads, higher conversion rates, and a
+          website that actually supports your growth goals, without spending
+          more on traffic.
+        </h2>
+        <div class="button-wrapper display-flex justify-content-center">
+          <Button href="contact.html">Book Your Free Strategy Call</Button>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-services padding-vertical-sitewide">
+      <div class="container">
+        <h2 class="heading-h2 margin-heading">Our Services</h2>
+        <div class="services-grid grid-2 gap-standard">
+          {
+            services.map((service) => (
+              <article class="service-card display-flex flex-direction-column gap-1rem">
+                <div class="media-card">
+                  <img src={service.image} alt={service.title} loading="lazy" />
+                </div>
+                <h3 class="heading-h4">{service.title}</h3>
+                <p class="text-size-regular">{service.description}</p>
+                <div class="button-wrapper service-card__cta">
+                  <Button href={service.href} variant="secondary">
+                    {service.cta}
+                  </Button>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+        <div class="button-wrapper display-flex justify-content-center">
+          <Button href="#contact-form">Book a 30-min Discovery Call</Button>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-cta padding-vertical-sitewide">
+      <div class="container">
+        <div
+          class="home-cta__card display-flex flex-direction-column align-items-center"
+        >
+          <h2 class="heading-h2 margin-heading">
+            Book a 30-min discovery call
+          </h2>
+          <Button href="contact.html">Book Your Free Strategy Call</Button>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-testimonials padding-vertical-sitewide">
+      <div class="container">
+        <h2 class="heading-h2 margin-heading">
+          Don't Just Take Our Word for It
+        </h2>
+        <p class="text-size-medium margin-paragraph">
+          After launch our clients see clearer messaging that resonates with
+          ideal customers resulting in improved organic traffic and search
+          visibility, higher-quality leads (fewer tire-kickers), and faster
+          sales cycles with better-qualified prospects.
+        </p>
+        <div class="text-style-muted">Testimonials will appear here.</div>
+      </div>
+    </section>
+
+    <section class="home-why padding-vertical-sitewide">
+      <div class="container">
+        <h2 class="heading-h2 margin-heading text-align-center">
+          Why Work with Us?
+        </h2>
+        <div class="grid-2 gap-standard">
+          <div class="display-flex flex-direction-column gap-1rem">
+            <h3 class="heading-h4 text-style-bold">
+              Limited capacity by design
+            </h3>
+            <p>
+              We take 3-5 clients per month. Your project gets my direct
+              attention, not a junior account manager.
+            </p>
+            <h3 class="heading-h4 text-style-bold">Strategy before pixels</h3>
+            <p>
+              Every site starts with ICP research. We don't design until we know
+              who's buying and why.
+            </p>
+            <h3 class="heading-h4 text-style-bold">Built to grow, not sit</h3>
+            <p>
+              Launch is step one. We stick around to maintain, update, and
+              optimize, because static sites don't build brands.
+            </p>
+            <div class="button-wrapper">
+              <Button href="contact.html">Book Your Free Strategy Call</Button>
+            </div>
+          </div>
+          <div class="home-why__video">
+            <iframe
+              title="Why work with us video"
+              src="https://www.youtube.com/embed/c4jbyw9rm34"
+              loading="lazy"
+              width="100%"
+              height="420"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-how padding-vertical-sitewide">
+      <div class="container">
+        <div class="grid-2 gap-standard">
+          <div>
+            <h2 class="heading-h2 margin-heading">How it Works</h2>
+            <div class="display-flex flex-direction-column gap-1rem">
+              {
+                howItWorks.map((step) => (
+                  <div>
+                    <h3 class="heading-h5 margin-bottom-xsmall">
+                      {step.title}
+                    </h3>
+                    <p class="text-size-regular">{step.description}</p>
+                  </div>
+                ))
+              }
+            </div>
+            <p class="text-size-regular margin-top-medium">
+              <strong>Timeline:</strong> Most projects launch in 4-8 weeks depending
+              on scope.
+            </p>
+          </div>
+          <div class="media-card">
+            <img
+              src="/images/key-deliverables-2.avif"
+              alt="Key deliverables"
+              loading="lazy"
+            />
+          </div>
+        </div>
+        <div class="home-how__testimonial grid-2 gap-standard margin-top-large">
+          <div class="media-card">
+            <img
+              src="/images/tom-connally-photo.avif"
+              alt="Tom Connally testimonial"
+              loading="lazy"
+            />
+          </div>
+          <div class="home-how__testimonial-content">
+            <p class="text-size-large">
+              Casey designed and developed an awesome website for my business.
+              That would be enough, but <strong>he is so much more</strong>. He
+              is an <strong>advisor</strong>, marketing <strong
+                >consultant</strong
+              >, and <strong>businessman</strong>.
+            </p>
+            <p class="text-size-regular margin-top-small">Tom Connally</p>
+            <p class="text-size-regular">
+              Leadership Coach, Connally Consulting
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="investment" class="home-pricing padding-vertical-sitewide">
+      <div class="container">
+        <p class="heading-eyebrow margin-bottom-xsmall">
+          How much does a Webflow website cost?
+        </p>
+        <h2 class="heading-h3 margin-heading">
+          Position focused websites that <span>generate qualified leads</span>
+        </h2>
+        <p class="text-size-medium margin-paragraph">
+          You're investing in a strategic asset that differentiates your
+          business and drives revenue growth, not just a website that looks
+          pretty.
+        </p>
+        <div class="grid-2 gap-standard">
+          <div class="pricing-card">
+            <h3 class="heading-h4 margin-bottom-small">Starting at</h3>
+            <div class="display-lg">$5,000</div>
+            <h4 class="heading-h5 margin-top-medium">
+              Your Investment Includes:
+            </h4>
+            <ul class="pricing-card__list">
+              {pricingBullets.map((bullet) => <li>{bullet}</li>)}
+            </ul>
+            <div class="button-wrapper">
+              <Button href="contact.html">Book Your Free Strategy Call</Button>
+            </div>
+          </div>
+          <div class="media-card">
+            <img
+              src="/images/Slider1.avif"
+              alt="Pricing showcase"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact-form" class="home-contact padding-vertical-sitewide">
+      <div class="container container-narrow">
+        <h2 class="heading-h3 margin-heading">Book Your Free Strategy Call</h2>
+        <p class="text-size-medium margin-paragraph">
+          Fit, outcomes, and next steps. No hard pitch.
+        </p>
+        <form
+          class="home-contact__form display-flex flex-direction-column gap-1rem"
+        >
+          <input
+            class="home-contact__field"
+            type="text"
+            name="name"
+            placeholder="Name"
+            required
+          />
+          <input
+            class="home-contact__field"
+            type="email"
+            name="email"
+            placeholder="Email"
+            required
+          />
+          <input
+            class="home-contact__field"
+            type="text"
+            name="company"
+            placeholder="Company"
+          />
+          <textarea
+            class="home-contact__field"
+            name="message"
+            rows="5"
+            placeholder="Tell us about your goals"></textarea>
+          <Button type="submit">Book Your Free Strategy Call</Button>
+        </form>
+      </div>
+    </section>
+
+    <section class="home-educator padding-vertical-sitewide">
+      <div class="container">
+        <h2 class="heading-h2 margin-heading">Work with an educator</h2>
+        <p class="text-size-medium max-width-medium">
+          We not only build Webflow websites, but we teach Web Design and
+          Webflow Development.
+        </p>
+        <div class="button-wrapper">
+          <Button href="/blog?category=Webflow+Tutorial" variant="secondary">
+            View All Tutorials
+          </Button>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-faq padding-vertical-sitewide">
+      <div class="container">
+        <h2 class="heading-h2 margin-heading">Frequently Asked Questions</h2>
+        <div class="faq-list display-flex flex-direction-column gap-1rem">
+          {
+            faqs.map((faq) => (
+              <details class="faq-item">
+                <summary class="faq-item__summary text-size-medium text-style-bold">
+                  {faq.question}
+                </summary>
+                <p class="faq-item__answer text-size-regular margin-top-xsmall">
+                  {faq.answer}
+                </p>
+              </details>
+            ))
+          }
+        </div>
+        <div class="button-wrapper">
+          <Button href="contact.html" variant="secondary"> Contact Us </Button>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-signup padding-vertical-sitewide">
+      <div class="container">
+        <div class="grid-2 gap-standard">
+          <div class="home-signup__content">
+            <h2 class="heading-h2 margin-heading">
+              <span class="text-style-bold">FREE</span> Book! SEO Starter Guide for
+              Small Businesses
+            </h2>
+            <h3 class="heading-h5 margin-bottom-small">
+              Rank Higher, Drive Traffic, Grow Fast
+            </h3>
+            <p class="text-size-medium">
+              Learn How to Boost Your Website's Traffic and Visibility with
+              Proven SEO Strategies Designed for Small Businesses in this
+              <strong> Free 41 Page Guide</strong>.
+            </p>
+            <div class="button-wrapper">
+              <Button href="seo-starter-guide.html" variant="secondary">
+                Learn More About the Guide
+              </Button>
+            </div>
+          </div>
+          <div class="media-card media-card--portrait">
+            <img
+              src="/images/SEO-Starter-Guide-Mockup-Screen_1.avif"
+              alt="SEO starter guide"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-blog padding-vertical-sitewide">
+      <div class="container">
+        <h2 class="heading-h2 margin-heading">Latest Articles</h2>
+        <p class="text-size-medium">
+          Business, Design, and SEO articles that empower startups and small
+          businesses to attract clients and increase revenue.
+        </p>
+        <div class="text-style-muted margin-top-small">
+          Blog posts will appear here.
+        </div>
+      </div>
+    </section>
+
+    <section class="home-cta home-cta--final padding-vertical-sitewide">
+      <div class="container">
+        <div
+          class="home-cta__card display-flex flex-direction-column align-items-center"
+        >
+          <h2 class="heading-h2 margin-heading">
+            Book a 30-min discovery call
+          </h2>
+          <Button href="contact.html">Book Your Free Strategy Call</Button>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

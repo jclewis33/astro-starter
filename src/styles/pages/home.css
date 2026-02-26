@@ -1,29 +1,212 @@
-/* ========== Gradient ========= */
+/* ======================================================
+   Home Page Styles
+   Pulls key layout styles from the Webflow export while
+   leaning on existing project utilities and variables.
+   ====================================================== */
 
-.background_gradient--top {
-  position: absolute;
-  inset: 0% 0% auto;
-  z-index: 0;
-  height: 60%;
-  margin-right: auto;
-  margin-left: auto;
-  background-image: radial-gradient(
-    circle farthest-corner at 50% -120%,
-    #3e60b1 31%,
-    var(--theme-bg--dark) 75%
-  );
+/* ========= Shared Media Cards ========= */
+
+.media-card {
+  aspect-ratio: 3 / 2;
+  border-radius: var(--radius-large);
+  background-color: var(--theme-bg-light-2);
+  overflow: hidden;
 }
 
-/* ========== Hero Section ========= */
-
-/* hero component */
-
-.home-hero__component {
-  grid-gap: var(--gap-standard);
+.media-card--portrait {
+  aspect-ratio: 2 / 3;
 }
 
-/* content wrapper */
+.media-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-.home-hero__content-wrapper {
+/* ========= Hero ========= */
+
+.home-hero__content {
   max-width: 65ch;
+}
+
+.home-hero__media-grid {
+  align-content: start;
+}
+
+.home-hero__proof {
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: 991px) {
+  .home-hero__media-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .home-hero__media-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ========= Case Studies ========= */
+
+.case-studies__grid {
+  gap: var(--gap-2rem);
+}
+
+.case-study-card {
+  position: relative;
+}
+
+.case-study-card__media {
+  display: block;
+}
+
+.case-study-card__heading {
+  gap: var(--gap-0-5rem);
+}
+
+@media screen and (max-width: 991px) {
+  .case-studies__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .case-studies__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ========= Process ========= */
+
+.home-process {
+  background: var(--theme-gradient-light-blue);
+}
+
+.process-step {
+  border: 1px solid var(--border-color-light);
+  border-radius: var(--radius-main);
+  background-color: var(--theme-bg-light);
+  padding: 2rem;
+}
+
+/* ========= Services ========= */
+
+.service-card {
+  border: 1px solid var(--border-color-light);
+  border-radius: var(--radius-main);
+  background-color: var(--theme-bg-light);
+  padding: 1.5rem;
+}
+
+.service-card__cta {
+  margin-top: auto;
+}
+
+/* ========= CTA ========= */
+
+.home-cta__card {
+  background: var(--theme-gradient-dark);
+  color: var(--theme-text-light);
+  border-radius: var(--radius-section);
+  padding: clamp(2.5rem, 3vw + 1rem, 4rem);
+  text-align: center;
+  width: 100%;
+}
+
+/* ========= Testimonials ========= */
+
+.home-testimonials {
+  background-color: var(--theme-bg-light-2);
+}
+
+/* ========= Why Section ========= */
+
+.home-why__video iframe {
+  border: 0;
+  border-radius: var(--radius-main);
+  width: 100%;
+  min-height: 420px;
+}
+
+/* ========= How It Works ========= */
+
+.home-how__testimonial {
+  border: 1px solid var(--border-color-light);
+  border-radius: var(--radius-main);
+  padding: 2rem;
+  align-items: center;
+}
+
+.home-how__testimonial-content {
+  max-width: 50ch;
+}
+
+/* ========= Pricing ========= */
+
+.pricing-card {
+  border: 1px solid var(--border-color-dark);
+  border-radius: var(--radius-main);
+  padding: 2rem;
+}
+
+.pricing-card__list {
+  list-style: none;
+  padding-left: 0;
+  margin: 1rem 0 2rem;
+  display: grid;
+  gap: var(--gap-0-5rem);
+}
+
+/* ========= Contact Form ========= */
+
+.home-contact__form {
+  margin-top: 1rem;
+}
+
+.home-contact__field {
+  width: 100%;
+  border: 1px solid var(--border-color-light);
+  border-radius: var(--radius-small);
+  background-color: var(--theme-bg-light);
+  padding: 0.75rem 1rem;
+  color: var(--theme-text-dark);
+}
+
+.home-contact__field::placeholder {
+  color: var(--color-neutral);
+}
+
+/* ========= FAQ ========= */
+
+.faq-item {
+  border-bottom: 1px solid var(--border-color-light);
+  padding-bottom: 1rem;
+}
+
+.faq-item__summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-item__summary::-webkit-details-marker {
+  display: none;
+}
+
+/* ========= Signup ========= */
+
+.home-signup {
+  background: var(--theme-gradient-light-blue-reverse);
+}
+
+.home-signup__content {
+  max-width: 55ch;
+}
+
+/* ========= Final CTA ========= */
+
+.home-cta--final .home-cta__card {
+  background: var(--theme-gradient-dark);
 }
